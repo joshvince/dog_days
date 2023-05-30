@@ -3,7 +3,14 @@ class DaysController < ApplicationController
 
   # GET /days or /days.json
   def index
-    @days = Day.all
+    @days = Day.all.order(date: :desc)
+
+    unless @days.first&.date == Date.today
+      today = Day.new(date: Date.today)
+      today.save!
+
+      @days = Day.all.order(date: :desc)
+    end
   end
 
   # GET /days/1 or /days/1.json
