@@ -15,6 +15,7 @@ class DaysController < ApplicationController
 
   # GET /days/1 or /days/1.json
   def show
+    @scratches = @day.scratches
   end
 
   # GET /days/new

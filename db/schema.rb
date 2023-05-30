@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_183909) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_30_190642) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,4 +20,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_183909) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "scratches", force: :cascade do |t|
+    t.bigint "day_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_scratches_on_day_id"
+  end
+
+  add_foreign_key "scratches", "days"
 end
