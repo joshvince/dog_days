@@ -1,4 +1,19 @@
+<% button_class = "mx-2 rounded-lg p-4 bg-gray-100 inline-flex items-center font-medium" %>
 <%= turbo_frame_tag @day, "scratches" do %>
-  <h1>Scratches</h1>
-  <div><%= @scratches %> scratches</div>
+  <div class="my-8 flex flex-col justify-center items-center">
+    <h2 class="mb-8 font-black text-3xl">Scratches</h2>
+    <div class="flex justify-center align-middle">
+      <%= link_to remove_scratch_path(@day.id), method: :post, class: button_class do %>
+        ➖
+      <% end %>
+      <p class="font-black text-cyan-800 text-6xl mx-4"><%= @total %></p>
+      <%= link_to add_scratch_path(@day.id), method: :post, class: button_class do %>
+        ➕
+      <% end %>
+    </div>
+    <div class="my-4 flex flex-col justify-center items-center text-gray-500">
+      <p class="uppercase text-xs font-gray-400">last scratched</p>
+      <%= format_time(@scratches.first&.created_at) %>
+    </div>
+  </div>
 <% end %>
