@@ -11,9 +11,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+  <body class="bg-zinc-50">
+    <main class="container mx-auto px-5 flex justify-center text-cyan-900">
+      <div class="flex-col items-center justify-center max-w-screen-lg">
+        <div class="flex justify-center my-4 w-full">
+          <%= link_to '🦮 Dog Days', days_path, class: "font-black text-2xl text-cyan-600" %>
+        </div>
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

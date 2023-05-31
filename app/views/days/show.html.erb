@@ -1,17 +1,18 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<div>
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
 
-    <%= render @day %>
+  <div class="flex justify-center text-4xl font-black mb-8">
+    <%= format_day(@day.date) %>
+  </div>
 
+  <div class="flex flex-wrap justify-center items-center w-full">
     <%= turbo_frame_tag @day, "scratches", src: scratch_path(@day) %>
+  </div>
 
-    <%= link_to 'Edit this day', edit_day_path(@day), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this day', day_path(@day), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
-    <%= link_to 'Back to days', days_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="flex justify-center w-full">
+    <%= link_to 'Edit', edit_day_path(@day), class: "mt-2 py-3 px-5 inline-block font-xs text-gray-500 underline uppercase" %>
+    <%= button_to 'Delete ', day_path(@day), method: :delete, class: "mt-2 py-3 px-5 inline-block font-xs text-red-400 underline uppercase" %>
   </div>
 </div>

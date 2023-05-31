@@ -9,6 +9,12 @@
   </div>
 
   <div id="days" class="min-w-full">
-    <%= render @days %>
+    <% @days.each do |day| %>
+      <%= link_to day do %>
+        <div class="flex justify-center w-full my-4 py-2 border rounded-md border-gray-200 shadow-lg hover:border-cyan-500 cursor-pointer font-bold text-xl">
+          <%= format_day(day.date) %>
+        </div>
+      <% end%>
+    <% end %>
   </div>
 </div>
