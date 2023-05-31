@@ -1,4 +1,5 @@
 class ScratchesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: %i[ add_to_today ]
   before_action :set_day, only: %i[ show add remove ]
 
   def show
@@ -16,6 +17,15 @@ class ScratchesController < ApplicationController
     Scratch.where(day: @day).order(created_at: :desc).first&.delete
 
     redirect_to scratch_path(@day.id)
+  end
+
+  def add_to_today
+    @day = Day.where(date: Date.today).first
+    @scratch = Scratch.new(day: @day)
+
+    if @scratch.save
+      render json: { status: 'created' }
+    end
   end
 
   private
