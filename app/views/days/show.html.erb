@@ -6,6 +6,8 @@
 
     <%= render @day %>
 
+    <%= turbo_frame_tag @day, "scratches", src: scratch_path(@day) %>
+
     <%= link_to 'Edit this day', edit_day_path(@day), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
       <%= button_to 'Destroy this day', day_path(@day), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
