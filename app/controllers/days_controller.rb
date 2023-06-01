@@ -1,5 +1,5 @@
 class DaysController < ApplicationController
-  before_action :set_day, only: %i[ show edit update destroy ]
+  before_action :set_day, only: %i[ show edit ear_state update_ear_state update destroy ]
 
   # GET /days or /days.json
   def index
@@ -21,6 +21,19 @@ class DaysController < ApplicationController
   # GET /days/new
   def new
     @day = Day.new
+  end
+
+  def ear_state
+    @ear_state = @day.ear_state
+    @all_ear_states = Day.ear_states
+  end
+
+  def update_ear_state
+    new_ear_state = params[:ear_state] || nil
+
+    if @day.update!(ear_state: new_ear_state)
+      redirect_to ear_state_path(@day)
+    end
   end
 
   # GET /days/1/edit
@@ -73,6 +86,6 @@ class DaysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def day_params
-      params.require(:day).permit(:date)
+      params.require(:day).permit(:date, :ear_state)
     end
 end
