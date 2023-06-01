@@ -2,9 +2,19 @@
 <%= turbo_frame_tag @day, "ear_state" do %>
   <div class="m-4 p-8 flex flex-col justify-center items-center bg-white border border-gray-00 shadow-lg rounded-md ">
     <h2 class="mb-8 font-black text-3xl">👂 Ear State</h2>
-    <%= form_with url: update_ear_state_path(@day), method: :post, class: "flex flex-col justify-center align-middle" do |form| %>
-      <%= form.select :ear_state, ear_state_options, { selected: @ear_state }, { class: "rounded-lg p-4 pr-8 border border-gray-300" } %>
-      <%= form.submit "Save", class: "mt-4 #{button_class}" %>
-    <% end %>
+    <div data-controller="ear-state">
+      <%= form_with(
+        url: update_ear_state_path(@day),
+        method: :post,
+        class: "flex flex-col justify-center align-middle",
+        data: {
+          "turbo-frame": "day_#{@day.id}_ear_state",
+          "ear-state-target": "form",
+          "action": "change->ear-state#update"
+        }
+      ) do |form| %>
+        <%= form.select :ear_state, ear_state_options, { selected: @ear_state }, { class: "rounded-lg p-4 pr-8 border border-gray-300", "data-ear-state-target": "option" } %>
+      <% end %>
+    </div>
   </div>
 <% end %>
