@@ -8,7 +8,9 @@
   </div>
 
   <div class="flex flex-wrap justify-center items-center w-full">
-    <%= turbo_frame_tag @day, "scratches", src: scratch_path(@day) %>
+    <%= turbo_frame_tag @day, "scratches", src: scratch_path(@day) do %>
+      <%= render 'scratches/show_loading' %>
+    <% end %>
   </div>
 
   <div class="flex justify-center w-full">
