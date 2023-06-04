@@ -19,6 +19,12 @@
     <% end %>
   </div>
 
+  <div class="flex flex-wrap justify-center items-center w-full">
+    <%= turbo_frame_tag @day, "meals", src: daily_meals_path(@day) do %>
+      <%= render 'ear_states/loading' %>
+    <% end %>
+  </div>
+
   <div class="flex justify-center w-full">
     <%= link_to 'Edit', edit_day_path(@day), class: "mt-2 py-3 px-5 inline-block font-xs text-gray-500 underline uppercase" %>
     <%= button_to 'Delete ', day_path(@day), method: :delete, class: "mt-2 py-3 px-5 inline-block font-xs text-red-400 underline uppercase" %>

@@ -1,0 +1,19 @@
+<%= turbo_frame_tag @day, "meals" do %>
+  <div class="m-4 p-8 flex flex-col justify-center items-center bg-white border border-gray-00 shadow-lg rounded-md ">
+    <h2 class="mb-8 font-black text-3xl">🍗 Food</h2>
+    <% if @meals.empty? %>
+      <%= render 'empty_state' %>
+    <% else %>
+      <% @meals.each do |meal| %>
+        <div class="flex space-between text-lg">
+          <div class="mr-2 text-2xl">
+            <%=meal.food.emoji %>
+          </div>
+          <div>
+            <%=meal.food.name %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
