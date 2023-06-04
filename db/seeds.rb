@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+foods = [
+  {
+    name: 'Regular kibble',
+    emoji: '🧆'
+  },
+  {
+    name: 'Allergy kibble',
+    emoji: '🧆'
+  },
+  {
+    name: 'Ham',
+    emoji: '🐷'
+  },
+  {
+    name: 'Cheese',
+    emoji: '🧀'
+  },
+  {
+    name: 'Boar Nuggets',
+    emoji: '🐗'
+  },
+]
+
+foods.each { |food| Food.create(name: food[:name], emoji: food[:emoji]) }
