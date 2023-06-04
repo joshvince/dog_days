@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/days/:id/update_ear_state', to: 'days#update_ear_state', as: 'update_ear_state'
 
   get '/days/:id/meals', to: 'food#daily_meals', as: 'daily_meals'
+  post '/days/:id/meals', to: 'food#update_daily_meal', as: 'update_daily_meal'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

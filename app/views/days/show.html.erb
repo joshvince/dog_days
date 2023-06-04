@@ -1,29 +1,28 @@
-<div>
+<div class="flex flex-col items-center">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-center text-4xl font-black mb-8">
+  <div class="text-4xl font-black mb-8">
     <%= format_day(@day.date) %>
   </div>
+    <div class="flex flex-wrap justify-center items-center">
+      <%= turbo_frame_tag @day, "scratches", src: scratch_path(@day), class: "w-96" do %>
+        <%= render 'scratches/show_loading' %>
+      <% end %>
+    </div>
 
-  <div class="flex flex-wrap justify-center items-center w-full">
-    <%= turbo_frame_tag @day, "scratches", src: scratch_path(@day) do %>
-      <%= render 'scratches/show_loading' %>
-    <% end %>
-  </div>
+    <div class="flex flex-wrap justify-center items-center">
+      <%= turbo_frame_tag @day, "ear_state", src: ear_state_path(@day), class: "w-96" do %>
+        <%= render 'ear_states/loading' %>
+      <% end %>
+    </div>
 
-  <div class="flex flex-wrap justify-center items-center w-full">
-    <%= turbo_frame_tag @day, "ear_state", src: ear_state_path(@day) do %>
-      <%= render 'ear_states/loading' %>
-    <% end %>
-  </div>
-
-  <div class="flex flex-wrap justify-center items-center w-full">
-    <%= turbo_frame_tag @day, "meals", src: daily_meals_path(@day) do %>
-      <%= render 'ear_states/loading' %>
-    <% end %>
-  </div>
+    <div class="flex flex-wrap justify-center items-center">
+      <%= turbo_frame_tag @day, "meals", src: daily_meals_path(@day), class: "w-96" do %>
+        <%= render 'ear_states/loading' %>
+      <% end %>
+    </div>
 
   <div class="flex justify-center w-full">
     <%= link_to 'Edit', edit_day_path(@day), class: "mt-2 py-3 px-5 inline-block font-xs text-gray-500 underline uppercase" %>
