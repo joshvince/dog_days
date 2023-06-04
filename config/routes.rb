@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :days
 
+  get '/', to: 'days#index'
+
   get '/scratches/:id', to: 'scratches#show', as: 'scratch'
   get '/scratches/add/:id', to: 'scratches#add', as: 'add_scratch'
   get '/scratches/remove/:id', to: 'scratches#remove', as: 'remove_scratch'
