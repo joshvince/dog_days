@@ -2,7 +2,7 @@ class MedicinesController < ApplicationController
   before_action :set_day, only: %i[ daily_doses update_daily_dose ]
 
   def daily_doses
-    @doses = @day.doses
+    @doses = @day.doses.reverse
   end
 
   def update_daily_dose

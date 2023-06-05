@@ -1,8 +1,8 @@
 class Day < ApplicationRecord
   has_many :scratches, dependent: :destroy
-  has_many :meals
+  has_many :meals, dependent: :delete_all
   has_many :food, through: :meals
-  has_many :doses
+  has_many :doses, dependent: :delete_all
   has_many :medicines, through: :doses
 
   def self.ear_states

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get '/days/:id/meals', to: 'food#daily_meals', as: 'daily_meals'
   post '/days/:id/meals', to: 'food#update_daily_meal', as: 'update_daily_meal'
+  post '/days/:id/create_new_meal', to: 'food#create_new_meal', as: 'create_new_meal'
 
   get '/days/:id/doses', to: 'medicines#daily_doses', as: 'daily_doses'
   post '/days/:id/doses', to: 'medicines#update_daily_dose', as: 'update_daily_dose'
