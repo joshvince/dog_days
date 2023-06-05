@@ -30,3 +30,9 @@ foods = [
 ]
 
 foods.each { |food| Food.create(name: food[:name], emoji: food[:emoji]) }
+
+medicines = [
+  { name: 'Epiotic' }, { name: 'Piriton' }, { name: 'Surolan' }
+]
+
+medicines.each { |medicine| Medicine.create(name: medicine[:name]) }

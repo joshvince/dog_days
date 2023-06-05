@@ -1,0 +1,20 @@
+<%= turbo_frame_tag @day, "doses" do %>
+  <div class="m-4 p-8 flex flex-col justify-center items-center bg-white border border-gray-00 shadow-lg rounded-md ">
+    <h2 class="mb-8 font-black text-3xl">💊 Medicine</h2>
+    <div>
+      <%= render 'add_dose' %>
+    </div>
+    <div class="uppercase text-xs text-gray-400 mt-4 mb-2">
+      <%= pluralize(@doses.count, 'dose') %>
+    </div>
+    <div class="flex flex-col items-start max-h-20 overflow-y-scroll overflow-visible border border-solid rounded-lg">
+      <% @doses.each do |dose| %>
+        <div class="flex items-start w-60 bg-cyan-50 border-b border-solid p-2">
+          <div>
+            <%=dose.medicine.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
