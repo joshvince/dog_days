@@ -1,5 +1,5 @@
 class DaysController < ApplicationController
-  before_action :set_day, only: %i[ show edit ear_state update_ear_state update destroy ]
+  before_action :set_day, only: %i[ show edit update destroy ]
 
   # GET /days or /days.json
   def index

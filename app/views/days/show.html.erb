@@ -20,7 +20,7 @@
 
     <div class="flex flex-wrap justify-center items-center">
       <%= turbo_frame_tag @day, "meals", src: daily_meals_path(@day), class: "w-96" do %>
-        <%= render 'ear_states/loading' %>
+        <%= render 'food/loading' %>
       <% end %>
     </div>
 
