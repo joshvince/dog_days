@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :days
 
   get '/', to: 'days#index'
+  get '/today', to: 'days#today'
 
   get '/scratches/:id', to: 'scratches#show', as: 'scratch'
   get '/scratches/add/:id', to: 'scratches#add', as: 'add_scratch'

@@ -1,16 +1,15 @@
 class DaysController < ApplicationController
   before_action :set_day, only: %i[ show edit update destroy ]
 
+  def today
+    today = all_days_with_today.first
+
+    redirect_to day_path(today)
+  end
+
   # GET /days or /days.json
   def index
-    @days = Day.all.order(date: :desc)
-
-    unless @days.first&.date == Date.today
-      today = Day.new(date: Date.today)
-      today.save!
-
-      @days = Day.all.order(date: :desc)
-    end
+    @days = all_days_with_today
   end
 
   # GET /days/1 or /days/1.json
@@ -87,5 +86,18 @@ class DaysController < ApplicationController
     # Only allow a list of trusted parameters through.
     def day_params
       params.require(:day).permit(:date, :ear_state)
+    end
+
+    def all_days_with_today
+      days = Day.all.order(date: :desc)
+
+      unless days.first&.date == Date.today
+        today = Day.new(date: Date.today)
+        today.save!
+
+        days.reload
+      end
+
+      days
     end
 end
