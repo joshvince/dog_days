@@ -1,5 +1,5 @@
 class MedicinesController < ApplicationController
-  before_action :set_day, only: %i[ daily_doses update_daily_dose ]
+  before_action :set_day
 
   def daily_doses
     @doses = @day.doses.reverse
@@ -13,6 +13,17 @@ class MedicinesController < ApplicationController
     end
   end
 
+  def create_new_dose
+    new_medicine = Medicine.new(name: params[:name])
+
+    Medicine.transaction do
+      new_medicine.save!
+
+      @day.doses.create!(medicine_id: new_medicine.reload.id)
+    end
+
+    redirect_to daily_doses_path(@day)
+  end
   private
 
   def set_day

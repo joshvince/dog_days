@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get '/days/:id/doses', to: 'medicines#daily_doses', as: 'daily_doses'
   post '/days/:id/doses', to: 'medicines#update_daily_dose', as: 'update_daily_dose'
+  post '/days/:id/create_new_dose', to: 'medicines#create_new_dose', as: 'create_new_dose'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
 end

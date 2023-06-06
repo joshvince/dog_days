@@ -1,0 +1,11 @@
+<%= form_with(url: create_new_dose_path(@day), method: :post) do |form| %>
+  <div class="flex flex-col items-end">
+    <div class="flex space-between mb-3">
+      <div class="flex flex-col">
+        <%= form.label(:name, 'Name', class: "uppercase text-xs text-gray-400 mb-1") %>
+        <%= form.text_field(:name, {class: "rounded-lg p-2 w-40 border border-gray-300", "data-toggle-form-target": "focusField"}) %>
+      </div>
+    </div>
+    <%= form.submit('Save and add', {class: "rounded-lg p-3 w-30 bg-cyan-500 hover:bg-cyan-600 text-white cursor-pointer"}) %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<div class="flex flex-col items-start max-h-20 overflow-y-scroll overflow-visible border border-solid rounded-lg">
+  <% @doses.each do |dose| %>
+    <div class="flex items-start w-60 bg-cyan-50 border-b border-solid p-2">
+      <div>
+        <%=dose.medicine.name %>
+      </div>
+    </div>
+  <% end %>
+</div>
