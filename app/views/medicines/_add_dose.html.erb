@@ -1,23 +1,21 @@
-<div data-controller="dose">
-  <%= form_with(
-    url: update_daily_dose_path(@day),
-    method: :post,
-    class: "flex flex-col justify-center align-middle",
-    data: {
-      "turbo-frame": "day_#{@day.id}_doses",
-      "dose-target": "form",
-      "action": "change->dose#add"
+<%= form_with(
+  url: update_daily_dose_path(@day),
+  method: :post,
+  class: "flex flex-col justify-center align-middle",
+  data: {
+    "controller": "inline-submit-form",
+    "turbo-frame": "day_#{@day.id}_doses",
+    "inline-submit-form-target": "form",
+    "action": "change->inline-submit-form#submit"
+  }
+) do |form| %>
+  <%= form.select(
+    :dose,
+    dose_options,
+    { prompt: "Add some medicine" },
+    {
+      class: "rounded-lg p-4 pr-8 border border-gray-300",
     }
-  ) do |form| %>
-    <%= form.select(
-      :dose,
-      dose_options,
-      { prompt: "Add some medicine" },
-      {
-        class: "rounded-lg p-4 pr-8 border border-gray-300",
-        "data-dose-target": "option"
-      }
-    )
-    %>
-  <% end %>
-</div>
+  )
+  %>
+<% end %>

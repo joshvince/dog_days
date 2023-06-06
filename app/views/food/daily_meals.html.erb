@@ -1,24 +1,24 @@
 <%= turbo_frame_tag @day, "meals" do %>
   <div
-    data-controller="meal"
+    data-controller="toggle-form"
     class="m-4 p-8 flex flex-col justify-center items-center bg-white border border-gray-00 shadow-lg rounded-md "
   >
     <h2 class="mb-8 font-black text-3xl">🍗 Food</h2>
-    <div data-meal-show-meal-creator-value="false" class="flex flex-col items-center">
+    <div data-toggle-form-show-form-value="false" class="flex flex-col items-center">
       <%= render 'add_meal' %>
       <div
-        data-meal-target="toggleText"
-        data-action="click->meal#toggle"
+        data-toggle-form-target="toggleText"
+        data-action="click->toggle-form#toggle"
         class="underline text-sm text-gray-500 mt-4 mb-4"
       >
         Create a new meal
       </div>
-      <div data-meal-target="list" class="flex flex-col items-center h-32">
+      <div data-toggle-form-target="toggleList" class="flex flex-col items-center h-32">
         <div class="uppercase text-xs text-gray-400 mb-4"><%= pluralize(@meals.count, 'meal') %></div>
         <%= render 'meal_list' %>
       </div>
     </div>
-    <div data-meal-target="creator" class="h-32">
+    <div data-toggle-form-target="toggleForm" class="h-32">
       <%= render 'create_new_meal' %>
     </div>
   </div>
