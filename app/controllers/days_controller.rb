@@ -2,9 +2,9 @@ class DaysController < ApplicationController
   before_action :set_day, only: %i[ show edit update destroy ]
 
   def today
-    today = Day.find_or_create_today
+    @day = Day.find_or_create_today
 
-    redirect_to day_path(today)
+    @scratches = @day.scratches
   end
 
   # GET /days or /days.json
