@@ -5,6 +5,10 @@ class Day < ApplicationRecord
   has_many :doses, dependent: :delete_all
   has_many :medicines, through: :doses
 
+  def self.find_or_create_today
+    find_or_create_by(date: Date.today)
+  end
+
   def self.ear_states
     [
       'L1:R1',

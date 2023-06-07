@@ -20,7 +20,7 @@ class ScratchesController < ApplicationController
   end
 
   def add_to_today
-    @day = Day.where(date: Date.today).first
+    @day = Day.find_or_create_today
     @scratch = Scratch.new(day: @day)
 
     if @scratch.save
